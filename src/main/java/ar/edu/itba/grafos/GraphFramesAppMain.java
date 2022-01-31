@@ -75,13 +75,13 @@ public class GraphFramesAppMain {
         final FileSystem fileSystem = FileSystem.get(conf);
 
         final FSDataOutputStream os = fileSystem.create(path, true);
-        os.writeChars("CODE\t ORIGIN\t\t\t\t ROUTE\n");
+        os.writeChars("CODE\t ORIGIN\t ROUTE\n");
 
         for(Row row : results) {
 
-            os.writeChars(row.get(0).toString() + "\t " +
-                            row.get(1).toString() + "\t\t\t " +
-                    buildArrayString(row.get(2))
+            os.writeChars(row.getAs("originCode").toString() + "\t " +
+                            row.getAs("originCity").toString() + "\t " +
+                            buildArrayString(row.getAs("route"))
             );
             os.writeChar('\n');
         }
@@ -92,14 +92,14 @@ public class GraphFramesAppMain {
         final FileSystem fileSystem = FileSystem.get(conf);
 
         final FSDataOutputStream os = fileSystem.create(path, true);
-        os.writeChars("CONTINENT\t\t COUNTRY\t\t\t\t ELEVATIONS\n");
+        os.writeChars("CONTINENT\t COUNTRY\t ELEVATIONS\n");
 
         for(Row row : results) {
-            os.writeChars(row.get(0).toString() + " (" +
-                    row.get(1).toString() + ")\t\t " +
-                    row.get(2).toString() + " (" +
-                    row.get(3).toString() + ")\t\t\t\t " +
-                    buildArrayString(row.get(4))
+            os.writeChars(row.getAs("continentCode").toString() + " (" +
+                    row.getAs("continentName").toString() + ")\t " +
+                    row.getAs("countryCode").toString() + " (" +
+                    row.getAs("countryCode").toString() + ")\t " +
+                    buildArrayString(row.getAs("airportElevations"))
             );
             os.writeChar('\n');
         }

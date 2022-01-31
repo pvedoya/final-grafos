@@ -37,14 +37,10 @@ public class XMLReader {
         Document doc = db.parse(is);
 
         doc.getDocumentElement().normalize();
-        System.out.println("Root element: " + doc.getDocumentElement().getNodeName());
 
         nodeList = doc.getElementsByTagName("node");
         edgeList = doc.getElementsByTagName("edge");
 
-        System.out.println("Successfully extracted nodes and edges from xml");
-        System.out.println("Node count: " + nodeList.getLength());
-        System.out.println("Edge count: " + edgeList.getLength());
         System.out.println();
     }
 

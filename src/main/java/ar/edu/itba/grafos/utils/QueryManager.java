@@ -30,20 +30,20 @@ public class QueryManager {
                 .filter("origin.lon IS NOT NULL and origin.lon < 0");
 
         return noStop.select(
-                        col("origin.code"),
-                        col("origin.city"),
-                        array("origin.code", "destination.code")
+                        col("origin.code").as("originCode"),
+                        col("origin.city").as("originCity"),
+                        array("origin.code", "destination.code").as("route")
                 ).union(oneStop.select(
-                        col("origin.code"),
-                        col("origin.city"),
-                        array("origin.code", "stop.code", "destination.code")
+                        col("origin.code").as("originCode"),
+                        col("origin.city").as("originCity"),
+                        array("origin.code", "stop.code", "destination.code").as("route")
         ));
     }
 
     public static Dataset<Row> executeQuery2(GraphFrame graphFrame) {
         System.out.println("Executing second Query");
 
-        return graphFrame
+        Dataset<Row> results = graphFrame
                 .filterEdges("labelE='contains'")
                 .find("(continent)-[]->(airport); (country)-[]->(airport)")
                 .filter("airport.labelV='airport'")
@@ -58,7 +58,11 @@ public class QueryManager {
                 )
                 .orderBy("continentCode", "countryCode", "airportElevation")
                 .groupBy("continentCode", "continentName", "countryCode", "countryName")
-                .agg(collect_list("airportElevation"))
+                .agg(collect_list("airportElevation").as("airportElevations"))
                 .orderBy("continentCode", "countryCode");
+
+
+        results.show(10000);
+        return results;
     }
 }
