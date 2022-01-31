@@ -56,6 +56,7 @@ public class QueryManager {
                         col("country.desc").as("countryName"),
                         col("airport.elev").as("airportElevation")
                 )
+                .orderBy("continentCode", "countryCode", "airportElevation")
                 .groupBy("continentCode", "continentName", "countryCode", "countryName")
                 .agg(collect_list("airportElevation"))
                 .orderBy("continentCode", "countryCode");

@@ -75,12 +75,12 @@ public class GraphFramesAppMain {
         final FileSystem fileSystem = FileSystem.get(conf);
 
         final FSDataOutputStream os = fileSystem.create(path, true);
-        os.writeChars("CODE\t ORIGIN\t ROUTE\n");
+        os.writeChars("CODE\t ORIGIN\t\t\t\t ROUTE\n");
 
         for(Row row : results) {
 
             os.writeChars(row.get(0).toString() + "\t " +
-                            row.get(1).toString() + "\t " +
+                            row.get(1).toString() + "\t\t\t " +
                     buildArrayString(row.get(2))
             );
             os.writeChar('\n');
@@ -92,13 +92,13 @@ public class GraphFramesAppMain {
         final FileSystem fileSystem = FileSystem.get(conf);
 
         final FSDataOutputStream os = fileSystem.create(path, true);
-        os.writeChars("CONTINENT\t\t COUNTRY\t\t ELEVATIONS\n");
+        os.writeChars("CONTINENT\t\t COUNTRY\t\t\t\t ELEVATIONS\n");
 
         for(Row row : results) {
             os.writeChars(row.get(0).toString() + " (" +
                     row.get(1).toString() + ")\t\t " +
                     row.get(2).toString() + " (" +
-                    row.get(3).toString() + ")\t\t " +
+                    row.get(3).toString() + ")\t\t\t\t " +
                     buildArrayString(row.get(4))
             );
             os.writeChar('\n');
