@@ -1,0 +1,265 @@
+<?xml version='1.0' ?>
+<!-- ******************************************************************************* -->
+<!-- Sample file containing selected air routes between selected airports.           -->
+<!-- Intended for learning purposes only and not for travel planning!                -->
+<!--                                                                                 -->
+<!-- Author: Kelvin R. Lawrence.                                                     -->
+<!-- Graph version : 0.84 , 2020-January-29th                                              -->
+<!--                                                                                 -->
+<!-- Please send details of errors in the graph or suggestions to:                   -->
+<!-- e-mail: gfxman@yahoo.com , twitter: @gfxman                                     -->
+<!--                                                                                 -->
+<!-- PLEASE NOTE:                                                                    -->
+<!-- The data in this graph is all available in the public domain but assembling it  -->
+<!-- all took considerable work! While I have tried to make the data as accurate     -->
+<!-- as possiblle I am sure errors remain. This data is intended as a learning aid   -->
+<!-- only and not for any commercial use.                                            -->
+<!--                                                                                 -->
+<!-- Significant amounts of my own research has gone into into the creation of this  -->
+<!-- graph. Aviation has always been a hobby of mine and this has been an            -->
+<!-- interesting spare time project. I have tried to error check and curate the      -->
+<!-- data which was a really big job but there are almost certainly still errors in  -->
+<!-- here. I have also been working at adding more recently announced routes and     -->
+<!-- this graph remains a work in progress as time permits.                          -->
+<!--                                                                                 -->
+<!-- Given that airlines are adding many routes on a weekly basis across the globe   -->
+<!-- a static graph such as this one will always be out of date the day it is        -->
+<!-- released! Thankfully new airports open less often and I hope I am more or less  -->
+<!-- including the majority of airports that have scheduled airline service.         -->
+<!--                                                                                 -->
+<!-- I do not include many airports without commercial passenger service as it is    -->
+<!-- passenger routes that I am most interested in. I also decided for now not to    -->
+<!-- include seaplane bases or heliports in the graph even if they offer             -->
+<!-- scheduled passenger service. Airports that are classified as only supporting    -->
+<!-- general aviation (private planes) and cargo are not included in the graph.      -->
+<!-- However, You will find some airports with no flights. This is mainly caused by  -->
+<!-- those airports having had commercial service at some prior time and I decided   -->
+<!-- to leave them in the graph in case one day in the future, service resumes.      -->
+<!--                                                                                 -->
+<!-- This graph only models airports and routes it does not attempt to model airlines-->
+<!-- or route frequency. For example, the graph can tell you that there is a route   -->
+<!-- between LHR and JFK that at least one airline operates but not which airlines   -->
+<!-- fly that route nor how many times a day the route is operated. That is an       -->
+<!-- exercise for another day and for a bigger graph! The graph also does not        -->
+<!-- currently contain any aircraft information.  For the most part I have only      -->
+<!-- included scheduled flights flown by commercial airlines. I have included a few  -->
+<!-- unusual routes such as the flights from RAF Brize Norton to RAF Ascension Island-->
+<!-- continuing on to Mount Pleasant in the Falkland Islands as I believe this       -->
+<!-- represents a significant route and is a sort of pseudo-scheduled flight. I do   -->
+<!-- not include routes flown only by freight carriers like FedEx and UPS. I also    -->
+<!-- have only mostly included airports with at least one route. There are a few     -->
+<!-- exceptions such as St. Helena which is a new airport with service pending, but  -->
+<!-- delayed, due to issues with wind shear. Where an airport has no flights but     -->
+<!-- remains in the graph it is probably because it was served by commercial airlines-->
+<!-- at some point. It is also useful for people learning to search graphs to be able-->
+<!-- to query for orphan nodes so for that reason as well I have left them in the    -->
+<!-- graph.                                                                          -->
+<!--                                                                                 -->
+<!-- All of this said, I believe, as a learning tool there is plenty in the graph to -->
+<!-- facilitate writing some interesting queries and if you are so inclined for      -->
+<!-- producing nice visuals. I hope people have as much fun playing with the graph   -->
+<!-- as I have had putting it together.                                              -->
+<!--                                                                                 -->
+<!-- Route distances were calculated using a standard Haversine Great Circle formula.-->
+<!-- This file is built using Ruby scripts that process all the collected data that  -->
+<!-- I have amassed!                                                                 -->
+<!--                                                                                 -->
+<!-- The graph has a simple schema as you will see from the GraphML markup below.    -->
+<!--                                                                                 -->
+<!-- There are four basic node types:                                                -->
+<!-- 1. Airport   - Contains properties like code (eg DFW), city, lat, lon etc.      -->
+<!-- 2. Country   - A convenient way to find all airports in a specific country.     -->
+<!-- 3. Continent - As above but for continents.                                     -->
+<!-- 4. Version   - A single stand alone node used to version the graph.             -->
+<!--                                                                                 -->
+<!-- There are two edge types:                                                       -->
+<!-- 1. Route    - Represents link between two airports with the distance in Great   -->
+<!--               Circle miles as a property.                                       -->
+<!-- 2. Contains - Connects countries and continents with airports.                  -->
+<!--                                                                                 -->
+<!-- This version of the graph contains 3497 airports and 50580 routes.              -->
+<!--                                                                                 -->
+<!-- ******************************************************************************* -->
+<graphml xmlns='http://graphml.graphdrawing.org/xmlns'>
+  <key id='type'    for='node' attr.name='type'    attr.type='string'></key>
+  <key id='code'    for='node' attr.name='code'    attr.type='string'></key>
+  <key id='icao'    for='node' attr.name='icao'    attr.type='string'></key>
+  <key id='desc'    for='node' attr.name='desc'    attr.type='string'></key>
+  <key id='region'  for='node' attr.name='region'  attr.type='string'></key>
+  <key id='runways' for='node' attr.name='runways' attr.type='int'></key>
+  <key id='longest' for='node' attr.name='longest' attr.type='int'></key>
+  <key id='elev'    for='node' attr.name='elev'    attr.type='int'></key>
+  <key id='country' for='node' attr.name='country' attr.type='string'></key>
+  <key id='city'    for='node' attr.name='city'    attr.type='string'></key>
+  <key id='lat'     for='node' attr.name='lat'     attr.type='double'></key>
+  <key id='lon'     for='node' attr.name='lon'     attr.type='double'></key>
+  <key id='author'  for='node' attr.name='author'  attr.type='string'></key>
+  <key id='date'    for='node' attr.name='date'    attr.type='string'></key>
+  <key id='dist'    for='edge' attr.name='dist'    attr.type='int'></key>
+  <key id='labelV'  for='node' attr.name='labelV'  attr.type='string'></key>
+  <key id='labelE'  for='edge' attr.name='labelE'  attr.type='string'></key>
+
+  <graph id='routes' edgedefault='directed'>
+  <node id='0'>
+    <data key='labelV'>version</data>
+    <data key='type'>version</data>
+    <data key='code'>0.84</data>
+    <data key='date'>2020-01-30 02:17:18 UTC</data>
+    <data key='author'>Kelvin R. Lawrence</data>
+    <data key='desc'>Air Routes Data - Version: 0.84 Generated: 2020-01-30 02:17:18 UTC; Graph created by Kelvin R. Lawrence; Please let me know of any errors you find in the graph.</data>
+  </node>
+  <node id='1'>
+    <data key='labelV'>airport</data>
+    <data key='type'>airport</data>
+    <data key='code'>ATL</data>
+    <data key='icao'>KATL</data>
+    <data key='city'>Atlanta</data>
+    <data key='desc'>Hartsfield - Jackson Atlanta International Airport</data>
+    <data key='region'>US-GA</data>
+    <data key='runways'>5</data>
+    <data key='longest'>12390</data>
+    <data key='elev'>1</data>
+    <data key='country'>ES</data>
+    <data key='lat'>-33.6366996765137</data>
+    <data key='lon'>-84.4281005859375</data>
+  </node>
+  <node id='2'>
+    <data key='labelV'>airport</data>
+    <data key='type'>airport</data>
+    <data key='code'>ANC</data>
+    <data key='icao'>PANC</data>
+    <data key='city'>Anchorage</data>
+    <data key='desc'>Anchorage Ted Stevens</data>
+    <data key='region'>US-AK</data>
+    <data key='runways'>3</data>
+    <data key='longest'>12400</data>
+    <data key='elev'>2</data>
+    <data key='country'>IT</data>
+    <data key='lat'>-61.1744003295898</data>
+    <data key='lon'>-149.996002197266</data>
+  </node>
+  <node id='3'>
+    <data key='labelV'>airport</data>
+    <data key='type'>airport</data>
+    <data key='code'>AUS</data>
+    <data key='icao'>KAUS</data>
+    <data key='city'>Austin</data>
+    <data key='desc'>Austin Bergstrom International Airport</data>
+    <data key='region'>US-TX</data>
+    <data key='runways'>2</data>
+    <data key='longest'>12250</data>
+    <data key='elev'>3</data>
+    <data key='country'>IT</data>
+    <data key='lat'>-30.1944999694824</data>
+    <data key='lon'>-97.6698989868164</data>
+  </node>
+  <node id='4'>
+    <data key='labelV'>airport</data>
+    <data key='type'>airport</data>
+    <data key='code'>BNA</data>
+    <data key='icao'>KBNA</data>
+    <data key='city'>Nashville</data>
+    <data key='desc'>Nashville International Airport</data>
+    <data key='region'>US-TN</data>
+    <data key='runways'>4</data>
+    <data key='longest'>11030</data>
+    <data key='elev'>4</data>
+    <data key='country'>AM</data>
+    <data key='lat'>-36.1245002746582</data>
+    <data key='lon'>-86.6781997680664</data>
+  </node>
+  <node id='22'>
+    <data key='labelV'>airport</data>
+    <data key='type'>airport</data>
+    <data key='code'>SEA</data>
+    <data key='icao'>KSEA</data>
+    <data key='city'>Seattle</data>
+    <data key='desc'>Seattle-Tacoma</data>
+    <data key='region'>US-WA</data>
+    <data key='runways'>3</data>
+    <data key='longest'>11901</data>
+    <data key='elev'>5</data>
+    <data key='country'>AM</data>
+    <data key='lat'>47.4490013122559</data>
+    <data key='lon'>-122.30899810791</data>
+  </node>
+  <node id='99'>
+    <data key='type'>country</data>
+    <data key='code'>ES</data>
+    <data key='desc'>Spain</data>
+    <data key='labelV'>country</data>
+  </node>
+  <node id='199'>
+    <data key='type'>country</data>
+    <data key='code'>IT</data>
+    <data key='desc'>Italy</data>
+    <data key='labelV'>country</data>
+  </node>
+  <node id='299'>
+    <data key='type'>country</data>
+    <data key='code'>AM</data>
+    <data key='desc'>Armenia</data>
+    <data key='labelV'>country</data>
+  </node>
+  <node id='100'>
+    <data key='type'>continent</data>
+    <data key='code'>EU</data>
+    <data key='desc'>Europe</data>
+    <data key='labelV'>continent</data>
+  </node>
+  <node id='200'>
+    <data key='type'>continent</data>
+    <data key='code'>AS</data>
+    <data key='desc'>Asia</data>
+    <data key='labelV'>continent</data>
+  </node>
+
+  <edge id='3742' source='1' target='22'>
+    <data key='labelE'>route</data>
+    <data key='dist'>811</data>
+  </edge>
+  <edge id='3743' source='2' target='22'>
+    <data key='labelE'>route</data>
+    <data key='dist'>214</data>
+  </edge>
+  <edge id='3744' source='3' target='4'>
+    <data key='labelE'>route</data>
+    <data key='dist'>945</data>
+  </edge>
+  <edge id='3745' source='4' target='22'>
+    <data key='labelE'>route</data>
+    <data key='dist'>576</data>
+  </edge>
+  <edge id='54358' source='99' target='1'>
+    <data key='labelE'>contains</data>
+  </edge>
+  <edge id='54359' source='199' target='2'>
+    <data key='labelE'>contains</data>
+  </edge>
+  <edge id='54360' source='199' target='3'>
+    <data key='labelE'>contains</data>
+  </edge>
+  <edge id='54361' source='299' target='4'>
+    <data key='labelE'>contains</data>
+  </edge>
+  <edge id='54362' source='299' target='22'>
+    <data key='labelE'>contains</data>
+  </edge>
+  <edge id='54363' source='100' target='1'>
+    <data key='labelE'>contains</data>
+  </edge>
+  <edge id='54364' source='100' target='2'>
+    <data key='labelE'>contains</data>
+  </edge>
+  <edge id='54365' source='100' target='3'>
+    <data key='labelE'>contains</data>
+  </edge>
+  <edge id='54366' source='200' target='4'>
+    <data key='labelE'>contains</data>
+  </edge>
+  <edge id='54367' source='200' target='22'>
+    <data key='labelE'>contains</data>
+  </edge>
+
+</graph>
+</graphml>
