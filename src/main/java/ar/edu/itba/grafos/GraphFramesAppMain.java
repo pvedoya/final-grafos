@@ -57,15 +57,18 @@ public class GraphFramesAppMain {
 
         GraphFrame myGraph = GraphFrame.apply(verticesDF, edgesDF);
 
-        String parentFolder = xmlPath.getParent().toString();
+        String parentFolder = xmlPath.getParent().getParent().toString();
 
-        writeToFileQuery1(QueryManager.executeQuery1(myGraph).collectAsList(),
-                new Path(parentFolder + "/" + startTimestamp + "-b1.txt")
-        );
+//        writeToFileQuery1(QueryManager.executeQuery1(myGraph).collectAsList(),
+//                new Path(parentFolder + "/" + startTimestamp + "-b1.txt")
+//        );
+//
+//        writeToFileQuery2(QueryManager.executeQuery2(myGraph).collectAsList(),
+//                new Path(parentFolder + "/" + startTimestamp + "-b2.txt")
+//        );
 
-        writeToFileQuery2(QueryManager.executeQuery2(myGraph).collectAsList(),
-                new Path(parentFolder + "/" + startTimestamp + "-b2.txt")
-        );
+//        QueryManager.firstQueryTest(myGraph);
+        QueryManager.secondQueryTest(myGraph);
 
         sparkContext.close();
     }

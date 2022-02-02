@@ -1,0 +1,183 @@
+<?xml version='1.0'?>
+<graphml xmlns='http://graphml.graphdrawing.org/xmlns'>
+  <key id='type' for='node' attr.name='type' attr.type='string'></key>
+  <key id='code' for='node' attr.name='code' attr.type='string'></key>
+  <key id='icao' for='node' attr.name='icao' attr.type='string'></key>
+  <key id='desc' for='node' attr.name='desc' attr.type='string'></key>
+  <key id='region' for='node' attr.name='region' attr.type='string'></key>
+  <key id='runways' for='node' attr.name='runways' attr.type='int'></key>
+  <key id='longest' for='node' attr.name='longest' attr.type='int'></key>
+  <key id='elev' for='node' attr.name='elev' attr.type='int'></key>
+  <key id='country' for='node' attr.name='country' attr.type='string'></key>
+  <key id='city' for='node' attr.name='city' attr.type='string'></key>
+  <key id='lat' for='node' attr.name='lat' attr.type='double'></key>
+  <key id='lon' for='node' attr.name='lon' attr.type='double'></key>
+  <key id='author' for='node' attr.name='author' attr.type='string'></key>
+  <key id='date' for='node' attr.name='date' attr.type='string'></key>
+  <key id='dist' for='edge' attr.name='dist' attr.type='int'></key>
+  <key id='labelV' for='node' attr.name='labelV' attr.type='string'></key>
+  <key id='labelE' for='edge' attr.name='labelE' attr.type='string'></key>
+
+  <graph id='routes' edgedefault='directed'>
+    <node id='0'>
+      <data key='labelV'>version</data>
+      <data key='type'>version</data>
+      <data key='code'>0.84</data>
+      <data key='date'>2020-01-30 02:17:18 UTC</data>
+      <data key='author'>Kelvin R. Lawrence</data>
+      <data key='desc'>Air Routes Data - Version: 0.84 Generated: 2020-01-30 02:17:18 UTC; Graph created by Kelvin R. Lawrence; Please let me know of any errors you find in the graph.</data>
+    </node>
+    <node id='1'>
+      <data key='labelV'>airport</data>
+      <data key='type'>airport</data>
+      <data key='code'>ATL</data>
+      <data key='icao'>KATL</data>
+      <data key='city'>Atlanta</data>
+      <data key='desc'>Hartsfield - Jackson Atlanta International Airport</data>
+      <data key='region'>US-GA</data>
+      <data key='runways'>5</data>
+      <data key='longest'>12390</data>
+      <data key='elev'>1026</data>
+      <data key='country'>US</data>
+      <data key='lat'>-33.6366996765137</data>
+      <data key='lon'>-84.4281005859375</data>
+    </node>
+    <node id='2'>
+      <data key='labelV'>airport</data>
+      <data key='type'>airport</data>
+      <data key='code'>ANC</data>
+      <data key='icao'>PANC</data>
+      <data key='city'>Anchorage</data>
+      <data key='desc'>Anchorage Ted Stevens</data>
+      <data key='region'>US-AK</data>
+      <data key='runways'>3</data>
+      <data key='longest'>12400</data>
+      <data key='elev'>151</data>
+      <data key='country'>US</data>
+      <data key='lat'>-61.1744003295898</data>
+      <data key='lon'>-149.996002197266</data>
+    </node>
+    <node id='3'>
+      <data key='labelV'>airport</data>
+      <data key='type'>airport</data>
+      <data key='code'>AUS</data>
+      <data key='icao'>KAUS</data>
+      <data key='city'>Austin</data>
+      <data key='desc'>Austin Bergstrom International Airport</data>
+      <data key='region'>US-TX</data>
+      <data key='runways'>2</data>
+      <data key='longest'>12250</data>
+      <data key='elev'>542</data>
+      <data key='country'>US</data>
+      <data key='lat'>-30.1944999694824</data>
+      <data key='lon'>-97.6698989868164</data>
+    </node>
+    <node id='4'>
+      <data key='labelV'>airport</data>
+      <data key='type'>airport</data>
+      <data key='code'>BNA</data>
+      <data key='icao'>KBNA</data>
+      <data key='city'>Nashville</data>
+      <data key='desc'>Nashville International Airport</data>
+      <data key='region'>US-TN</data>
+      <data key='runways'>4</data>
+      <data key='longest'>11030</data>
+      <data key='elev'>599</data>
+      <data key='country'>US</data>
+      <data key='lat'>-36.1245002746582</data>
+      <data key='lon'>-86.6781997680664</data>
+    </node>
+    <node id='5'>
+      <data key='labelV'>airport</data>
+      <data key='type'>airport</data>
+      <data key='code'>BOS</data>
+      <data key='icao'>KBOS</data>
+      <data key='city'>Boston</data>
+      <data key='desc'>Boston Logan</data>
+      <data key='region'>US-MA</data>
+      <data key='runways'>6</data>
+      <data key='longest'>10083</data>
+      <data key='elev'>19</data>
+      <data key='country'>US</data>
+      <data key='lat'>-42.36429977</data>
+      <data key='lon'>-71.00520325</data>
+    </node>
+    <node id='6'>
+      <data key='labelV'>airport</data>
+      <data key='type'>airport</data>
+      <data key='code'>BWI</data>
+      <data key='icao'>KBWI</data>
+      <data key='city'>Baltimore</data>
+      <data key='desc'>Baltimore/Washington International Airport</data>
+      <data key='region'>US-MD</data>
+      <data key='runways'>3</data>
+      <data key='longest'>10502</data>
+      <data key='elev'>143</data>
+      <data key='country'>US</data>
+      <data key='lat'>39.17539978</data>
+      <data key='lon'>-76.66829681</data>
+    </node>
+    <node id='7'>
+      <data key='labelV'>airport</data>
+      <data key='type'>airport</data>
+      <data key='code'>DCA</data>
+      <data key='icao'>KDCA</data>
+      <data key='city'>Washington D.C.</data>
+      <data key='desc'>Ronald Reagan Washington National Airport</data>
+      <data key='region'>US-DC</data>
+      <data key='runways'>3</data>
+      <data key='longest'>7169</data>
+      <data key='elev'>14</data>
+      <data key='country'>US</data>
+      <data key='lat'>38.8521003723145</data>
+      <data key='lon'>-77.0376968383789</data>
+    </node>
+    <node id='8'>
+      <data key='labelV'>airport</data>
+      <data key='type'>airport</data>
+      <data key='code'>SEA</data>
+      <data key='icao'>KSEA</data>
+      <data key='city'>Seattle</data>
+      <data key='desc'>Seattle-Tacoma</data>
+      <data key='region'>US-WA</data>
+      <data key='runways'>3</data>
+      <data key='longest'>11901</data>
+      <data key='elev'>432</data>
+      <data key='country'>ES</data>
+      <data key='lat'>47.4490013122559</data>
+      <data key='lon'>-122.30899810791</data>
+    </node>
+    <edge id='9' source='1' target='8'>
+      <data key='labelE'>route</data>
+      <data key='dist'>811</data>
+    </edge>
+    <edge id='10' source='5' target='4'>
+      <data key='labelE'>route</data>
+      <data key='dist'>811</data>
+    </edge>
+    <edge id='11' source='7' target='4'>
+      <data key='labelE'>route</data>
+      <data key='dist'>811</data>
+    </edge>
+    <edge id='12' source='7' target='8'>
+      <data key='labelE'>route</data>
+      <data key='dist'>811</data>
+    </edge>
+    <edge id='13' source='2' target='8'>
+      <data key='labelE'>route</data>
+      <data key='dist'>811</data>
+    </edge>
+    <edge id='14' source='7' target='5'>
+      <data key='labelE'>route</data>
+      <data key='dist'>811</data>
+    </edge>
+    <edge id='15' source='3' target='6'>
+      <data key='labelE'>route</data>
+      <data key='dist'>811</data>
+    </edge>
+    <edge id='16' source='6' target='8'>
+      <data key='labelE'>route</data>
+      <data key='dist'>811</data>
+    </edge>
+  </graph>
+</graphml>
