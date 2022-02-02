@@ -188,7 +188,7 @@ public class QueryManager {
                 )
                 .orderBy("continentCode", "countryCode", "airportElevation");
 
-        originalQuery.show(10000);
+        singleElevations.show(10000);
 
     }
 
